@@ -1,6 +1,9 @@
 package browser
 
-import "os/exec"
+import (
+	"os/exec"
+	"strings"
+)
 
 func openBrowser(url string) error {
 	providers := []string{"xdg-open", "x-www-browser", "www-browser"}
@@ -14,7 +17,7 @@ func openBrowser(url string) error {
 		}
 	}
 
-	return exec.ErrNotFound
+	return &exec.Error{Name: strings.Join(providers, ","), Err: ErrNotFound}
 }
 
 func setFlags(cmd *exec.Cmd) {}
