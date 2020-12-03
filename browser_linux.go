@@ -9,9 +9,9 @@ func openBrowser(url string) error {
 		if wslErr := runCmd("wslview", url); wslErr != nil {
 			return err
 		}
-
-		return nil
 	}
+
+	return nil
 }
 
 func setFlags(cmd *exec.Cmd) {}
